@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basics of Mathematics Workbook</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<style>
+:root{--bg:#f6f7fb;--panel:#fff;--side:#fff;--text:#1b2030;--muted:#6a7188;--line:#e1e4ee;--accent:#3b6cf6;--ok:#1f9d57;--warn:#d98a14;--empty:#8a90a6;--chip:#eef1fa}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1117;--panel:#151b26;--side:#10151f;--text:#e6e9f2;--muted:#8d95ad;--line:#232b3b;--accent:#6b93ff;--ok:#3ecf7e;--warn:#f0a63a;--empty:#6b7390;--chip:#1c2434}}
+:root[data-theme="dark"]{--bg:#0d1117;--panel:#151b26;--side:#10151f;--text:#e6e9f2;--muted:#8d95ad;--line:#232b3b;--accent:#6b93ff;--ok:#3ecf7e;--warn:#f0a63a;--empty:#6b7390;--chip:#1c2434}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;display:flex;min-height:100vh}
+aside{width:290px;flex:none;background:var(--side);border-right:1px solid var(--line);padding:16px;position:sticky;top:0;height:100vh;overflow:auto}
+main{flex:1;min-width:0;padding:0 24px 48px}
+.brand{display:flex;gap:10px;align-items:center;margin-bottom:14px}
+.logo{width:36px;height:36px;border-radius:9px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700}
+.brand b{display:block;line-height:1.2}.brand small{color:var(--muted)}
+input[type=search]{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);margin-bottom:12px}
+.grp{font-size:11px;letter-spacing:.08em;color:var(--muted);margin:16px 0 6px;text-transform:uppercase}
+.nav{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;background:none;border:0;color:var(--text);padding:7px 9px;border-radius:7px;cursor:pointer;font:inherit}
+.nav:hover{background:var(--chip)}.nav.active{background:var(--chip);color:var(--accent);font-weight:600}
+.count{font-size:12px;color:var(--muted);background:var(--chip);border-radius:6px;padding:0 6px}
+.count.done{color:var(--ok)}
+header{position:sticky;top:0;background:var(--bg);padding:14px 0;z-index:5;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.tabs{display:flex;gap:6px}
+.tab{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:8px 14px;border-radius:9px;cursor:pointer;font:inherit}
+.tab.active{border-color:var(--accent);color:var(--accent);font-weight:600}
+.spacer{flex:1}
+.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:7px 12px;border-radius:8px;cursor:pointer;font:inherit;text-decoration:none}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.wrap{max-width:900px;margin:22px auto}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:20px}
+.muted{color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.stat small{color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+.stat b{display:block;font-size:30px;line-height:1.2}
+.bar{height:10px;border-radius:6px;background:var(--chip);overflow:hidden;display:flex}
+.bar i{display:block;height:100%;background:var(--ok)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{border:1px solid var(--line);background:var(--chip);color:var(--muted);border-radius:8px;padding:6px 12px;cursor:pointer;font:inherit;font-size:13px}
+.chip.ok{border-color:var(--ok);color:var(--ok)}
+.tag{font-size:11px;border-radius:6px;padding:1px 7px;border:1px solid var(--line);color:var(--muted)}
+.tag.ok{color:var(--ok);border-color:var(--ok)}
+details.p{border:1px solid var(--line);border-radius:10px;margin:10px 0;background:var(--panel)}
+details.p>summary{cursor:pointer;padding:12px 16px;font-weight:600;list-style:none;display:flex;gap:10px;align-items:center}
+details.p>summary::-webkit-details-marker{display:none}
+details.p .inner{padding:0 18px 16px;border-top:1px solid var(--line)}
+.md blockquote{border-left:3px solid var(--accent);margin:12px 0;padding:2px 14px;color:var(--muted)}
+.md h1{font-size:22px}.md h2{font-size:17px;margin-top:22px;color:var(--accent)}
+.md table{border-collapse:collapse}.md td,.md th{border:1px solid var(--line);padding:4px 10px}
+.md pre{background:var(--chip);padding:10px;border-radius:8px;overflow:auto}
+.md code{background:var(--chip);padding:1px 5px;border-radius:5px}
+.md .katex-display{overflow-x:auto;overflow-y:hidden}
+.issue{display:flex;gap:10px;justify-content:space-between;border-top:1px solid var(--line);padding:8px 0}
+@media (max-width:760px){body{display:block}aside{position:static;width:auto;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:0 14px 40px}}
+</style>
+</head>
+<body>
+<aside>
+  <div class="brand"><div class="logo">&sum;</div><div><b>Basics of Mathematics</b><small>Student Workbook 2026</small></div></div>
+  <input id="q" type="search" placeholder="Search exercises, topics...">
+  <button class="nav" data-view="tracker"><span>Acceptance Tracker</span></button>
+  <div id="sets"></div>
+</aside>
+<main>
+  <header>
+    <div class="tabs">
+      <button class="tab" data-tab="exercises">Exercise Problems</button>
+      <button class="tab" data-tab="solutions">Solutions Explorer</button>
+      <button class="tab" data-tab="tracker">Progress Tracker</button>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn" id="theme" title="Toggle theme">Theme</button>
+    <a class="btn" id="gh" href="#" target="_blank" rel="noopener">GitHub</a>
+  </header>
+  <div class="wrap md" id="view"></div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="data.js"></script>
+<script>
+// Fork this page is published from. Change if the repository moves.
+const REPO = "aliev-ibra/Basics_of_Mathematics_Student_Workbook_2026";
+document.getElementById("gh").href = "https://github.com/" + REPO;
+
+const SETS = window.WORKBOOK || [];
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const state = {tab:"tracker", set:null, query:"", issues:null, issueError:null};
+
+// Markdown with math: lift $$..$$ and $..$ out first so marked does not mangle backslashes or underscores.
+function renderMd(src){
+  const math = [];
+  const keep = (tex, display) => { math.push({tex, display}); return "\u0000" + (math.length-1) + "\u0000"; };
+  let t = src.replace(/\$\$([\s\S]+?)\$\$/g, (_, m) => keep(m, true))
+             .replace(/\$([^$\n]+?)\$/g, (_, m) => keep(m, false));
+  let html = marked.parse(t);
+  return html.replace(/\u0000(\d+)\u0000/g, (_, i) => {
+    const {tex, display} = math[+i];
+    try { return katex.renderToString(tex, {displayMode:display, throwOnError:false}); }
+    catch (e) { return esc(tex); }
+  });
+}
+
+const total = s => s.problems.length;
+const done = s => s.problems.filter(p => p.written).length;
+function totals(){
+  const t = SETS.reduce((a,s)=>a+total(s),0), w = SETS.reduce((a,s)=>a+done(s),0);
+  return {t, w};
+}
+
+function renderSidebar(){
+  const q = state.query.toLowerCase();
+  let html = "", last = "";
+  for (const s of SETS){
+    if (q && !(s.title + s.group + s.problems.map(p=>p.title).join(" ")).toLowerCase().includes(q)) continue;
+    if (s.group !== last){ html += `<div class="grp">${esc(s.group)}</div>`; last = s.group; }
+    const d = done(s), n = total(s);
+    html += `<button class="nav ${state.set===s.id?"active":""}" data-set="${s.id}"><span>${esc(s.title)}</span><span class="count ${d===n?"done":""}">${d}/${n}</span></button>`;
+  }
+  $("#sets").innerHTML = html;
+}
+
+function problemBlock(s, p, mode){
+  const tag = p.written ? `<span class="tag ok">written</span>` : `<span class="tag">empty</span>`;
+  const body = mode === "exercises"
+    ? renderMd(p.body)
+    : (p.written ? renderMd(p.solution) : `<p class="muted">No note written yet. Expected file: <code>${esc(p.solution_path)}</code></p>`);
+  return `<details class="p"><summary><span>${p.n}. ${esc(p.title)}</span><span class="spacer"></span>${tag}</summary><div class="inner">${body}</div></details>`;
+}
+
+function renderSet(mode){
+  const s = SETS.find(x => x.id === state.set) || SETS[0];
+  if (!s) return "<p>No data. Run tools/build_site.py.</p>";
+  state.set = s.id;
+  const q = state.query.toLowerCase();
+  const list = s.problems.filter(p => !q || (p.title + p.body).toLowerCase().includes(q));
+  const intro = mode === "exercises" ? `<div class="card">${renderMd(s.intro.replace(/^#\s+.*$/m,""))}</div>` : "";
+  return `<h1>${esc(s.title)}</h1><p class="muted">${esc(s.group)} · ${done(s)} of ${total(s)} notes written</p>${intro}` +
+         (list.map(p => problemBlock(s,p,mode)).join("") || `<p class="muted">No matches.</p>`);
+}
+
+function renderTracker(){
+  const {t, w} = totals();
+  const pct = t ? (w/t*100) : 0;
+  const rows = SETS.map(s => {
+    const chips = s.problems.map(p => `<button class="chip ${p.written?"ok":""}" data-open="${s.id}|${p.n}">P${p.n}${p.written?" ✓":""}</button>`).join("");
+    const d = done(s), n = total(s);
+    return `<div class="card"><div class="muted" style="font-size:12px;letter-spacing:.06em">${esc(s.group.toUpperCase())}</div>
+      <div style="display:flex;justify-content:space-between;gap:10px"><b style="font-size:17px">${esc(s.title)}</b><span class="tag ${d===n?"ok":""}">${d}/${n} written</span></div>
+      <div class="bar" style="margin-top:8px"><i style="width:${n?d/n*100:0}%"></i></div><div class="chips">${chips}</div></div>`;
+  }).join("");
+  let issues = "";
+  if (state.issueError) issues = `<p class="muted">${esc(state.issueError)}</p>`;
+  else if (state.issues) issues = state.issues.length
+    ? state.issues.map(i => `<div class="issue"><span><a href="${i.html_url}" target="_blank" rel="noopener">#${i.number} ${esc(i.title)}</a></span><span class="tag ${i.state==="closed"?"ok":""}">${i.state}</span></div>`).join("")
+    : `<p class="muted">No issues in the fork yet, so no instructor comments.</p>`;
+  else issues = `<p class="muted">Press the button to load the instructor's review issues.</p>`;
+  return `<h1>Progress Tracker</h1>
+   <p class="muted">Counts come from the Markdown files in <code>solutions/</code>: a note counts as written when its file is not empty. Whether the instructor has <em>accepted</em> a note is decided in class and through GitHub Issues, so it is not guessed here.</p>
+   <div class="stats">
+     <div class="card stat"><small>Notes written</small><b style="color:var(--ok)">${w}</b><span class="muted">${pct.toFixed(1)}% of course</span></div>
+     <div class="card stat"><small>Still empty</small><b>${t-w}</b><span class="muted">${(100-pct).toFixed(1)}% remaining</span></div>
+     <div class="card stat"><small>Total problems</small><b style="color:var(--accent)">${t}</b><span class="muted">${SETS.length} topic sets</span></div>
+   </div>
+   <div class="card"><div style="display:flex;justify-content:space-between"><b>Overall workbook completion</b><b>${pct.toFixed(1)}%</b></div><div class="bar" style="margin-top:8px"><i style="width:${pct}%"></i></div></div>
+   <div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><b>Instructor review (GitHub Issues)</b><button class="btn primary" id="sync">Sync with GitHub Issues</button></div>${issues}</div>
+   ${rows}`;
+}
+
+function render(){
+  document.querySelectorAll(".tab").forEach(b => b.classList.toggle("active", b.dataset.tab === state.tab));
+  document.querySelectorAll(".nav[data-view]").forEach(b => b.classList.toggle("active", state.tab === "tracker"));
+  renderSidebar();
+  $("#view").innerHTML = state.tab === "tracker" ? renderTracker() : renderSet(state.tab);
+  location.hash = state.tab === "tracker" ? "tracker" : state.tab + "/" + state.set;
+}
+
+async function syncIssues(){
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPO}/issues?state=all&per_page=50`);
+    if (!r.ok) throw new Error("GitHub answered " + r.status);
+    state.issues = (await r.json()).filter(i => !i.pull_request);
+    state.issueError = null;
+  } catch (e) {
+    state.issueError = "Could not load issues (" + e.message + "). Issues must be enabled in the fork.";
+  }
+  render();
+}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-tab]"); if (t){ state.tab = t.dataset.tab; render(); return; }
+  const v = e.target.closest("[data-view]"); if (v){ state.tab = "tracker"; render(); return; }
+  const s = e.target.closest("[data-set]"); if (s){ state.set = s.dataset.set; if (state.tab === "tracker") state.tab = "exercises"; render(); window.scrollTo(0,0); return; }
+  const o = e.target.closest("[data-open]"); if (o){ const [id,n] = o.dataset.open.split("|"); state.set = id; state.tab = "solutions"; render();
+    const d = document.querySelectorAll("details.p")[+n-1]; if (d){ d.open = true; d.scrollIntoView(); } return; }
+  if (e.target.id === "sync") syncIssues();
+  if (e.target.id === "theme"){ const r = document.documentElement; const dark = getComputedStyle(r).getPropertyValue("--bg").trim() === "#0d1117"; r.dataset.theme = dark ? "light" : "dark"; try { localStorage.setItem("theme", r.dataset.theme); } catch(_){} }
+});
+$("#q").addEventListener("input", e => { state.query = e.target.value; render(); });
+
+try { const th = localStorage.getItem("theme"); if (th) document.documentElement.dataset.theme = th; } catch(_){}
+const h = location.hash.slice(1).split("/");
+if (["exercises","solutions"].includes(h[0])){ state.tab = h[0]; const id = decodeURIComponent(h.slice(1).join("/")); if (SETS.some(s=>s.id===id)) state.set = id; }
+render();
+</script>
+</body>
+</html>
