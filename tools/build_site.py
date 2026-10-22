@@ -1,8 +1,9 @@
 """Generate docs/data.js for the workbook dashboard from exercises/ and solutions/.
 
 Run from the repository root:  python3 tools/build_site.py
-Reads only; writes only docs/data.js.
+Reads exercises/ and solutions/; writes docs/data.js and stamps its version into docs/index.html.
 """
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -60,6 +61,11 @@ def main():
             })
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text("window.WORKBOOK = " + json.dumps(sets, ensure_ascii=False) + ";\n", encoding="utf-8")
+    # Stamp a content hash on the data.js link so browsers and the Pages cache fetch fresh data after every rebuild.
+    version = hashlib.sha1(OUT.read_bytes()).hexdigest()[:10]
+    page = OUT.parent / "index.html"
+    html = page.read_text(encoding="utf-8")
+    page.write_text(re.sub(r'<script src="data\.js[^"]*">', f'<script src="data.js?v={version}">', html), encoding="utf-8")
     total = sum(len(s["problems"]) for s in sets)
     written = sum(p["written"] for s in sets for p in s["problems"])
     print(f"{len(sets)} sets, {total} problems, {written} written -> {OUT.relative_to(ROOT)}")
